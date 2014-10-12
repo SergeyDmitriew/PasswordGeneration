@@ -15,5 +15,10 @@ namespace PasswordGenerator
         {
             InitializeComponent ();
         }
+
+        private void FormSettings_Load (object sender, EventArgs e)
+        {
+
+        }
     }
 }
