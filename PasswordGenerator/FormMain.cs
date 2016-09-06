@@ -11,8 +11,6 @@ namespace PasswordGenerator
 {
     public partial class FormMain : Form
     {
-
-
         public FormMain ()
         {
             InitializeComponent ();
@@ -20,7 +18,6 @@ namespace PasswordGenerator
 
         private void FormMain_Load (object sender, EventArgs e)
         {
-
         }
     }
 }
