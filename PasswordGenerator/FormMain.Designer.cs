@@ -39,28 +39,26 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown ();
             this.button4 = new System.Windows.Forms.Button ();
             this.groupBoxSettings = new System.Windows.Forms.GroupBox ();
-            this.checkBox1 = new System.Windows.Forms.CheckBox ();
-            this.checkBox2 = new System.Windows.Forms.CheckBox ();
-            this.radioButton1 = new System.Windows.Forms.RadioButton ();
-            this.radioButton2 = new System.Windows.Forms.RadioButton ();
-            this.radioButton3 = new System.Windows.Forms.RadioButton ();
+            this.textBoxRange = new System.Windows.Forms.TextBox ();
+            this.checkBoxCustom = new System.Windows.Forms.CheckBox ();
+            this.checkBoxPunctuation = new System.Windows.Forms.CheckBox ();
+            this.checkBoxDigital = new System.Windows.Forms.CheckBox ();
+            this.checkBoxCyrillicUp = new System.Windows.Forms.CheckBox ();
+            this.checkBoxCyrillicDown = new System.Windows.Forms.CheckBox ();
+            this.checkBoxLatinUp = new System.Windows.Forms.CheckBox ();
+            this.checkBoxLatinDown = new System.Windows.Forms.CheckBox ();
+            this.radioButtonRangeBase64 = new System.Windows.Forms.RadioButton ();
+            this.radioButtonRangeBase16 = new System.Windows.Forms.RadioButton ();
+            this.radioButtonRangeBase2 = new System.Windows.Forms.RadioButton ();
+            this.radioButtonRangeBas8 = new System.Windows.Forms.RadioButton ();
+            this.radioButtonRangeBase10 = new System.Windows.Forms.RadioButton ();
             this.checkBox3 = new System.Windows.Forms.CheckBox ();
-            this.panel1 = new System.Windows.Forms.Panel ();
-            this.radioButton5 = new System.Windows.Forms.RadioButton ();
-            this.radioButton6 = new System.Windows.Forms.RadioButton ();
-            this.checkBox4 = new System.Windows.Forms.CheckBox ();
-            this.checkBox5 = new System.Windows.Forms.CheckBox ();
-            this.checkBox6 = new System.Windows.Forms.CheckBox ();
-            this.checkBox7 = new System.Windows.Forms.CheckBox ();
-            this.checkBox8 = new System.Windows.Forms.CheckBox ();
-            this.checkBox9 = new System.Windows.Forms.CheckBox ();
-            this.checkBox10 = new System.Windows.Forms.CheckBox ();
-            this.textBox2 = new System.Windows.Forms.TextBox ();
+            this.checkBoxDigitalRange = new System.Windows.Forms.CheckBox ();
+            this.checkBoxStandart = new System.Windows.Forms.CheckBox ();
             this.groupBox2.SuspendLayout ();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown2)).BeginInit ();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit ();
             this.groupBoxSettings.SuspendLayout ();
-            this.panel1.SuspendLayout ();
             this.SuspendLayout ();
             // 
             // textBoxOutput
@@ -200,18 +198,22 @@
             // 
             this.groupBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSettings.Controls.Add (this.textBox2);
-            this.groupBoxSettings.Controls.Add (this.checkBox10);
-            this.groupBoxSettings.Controls.Add (this.checkBox9);
-            this.groupBoxSettings.Controls.Add (this.checkBox8);
-            this.groupBoxSettings.Controls.Add (this.checkBox6);
-            this.groupBoxSettings.Controls.Add (this.checkBox7);
-            this.groupBoxSettings.Controls.Add (this.checkBox5);
-            this.groupBoxSettings.Controls.Add (this.checkBox4);
-            this.groupBoxSettings.Controls.Add (this.panel1);
+            this.groupBoxSettings.Controls.Add (this.radioButtonRangeBase64);
+            this.groupBoxSettings.Controls.Add (this.textBoxRange);
+            this.groupBoxSettings.Controls.Add (this.radioButtonRangeBase16);
+            this.groupBoxSettings.Controls.Add (this.checkBoxCustom);
+            this.groupBoxSettings.Controls.Add (this.radioButtonRangeBase2);
+            this.groupBoxSettings.Controls.Add (this.radioButtonRangeBas8);
+            this.groupBoxSettings.Controls.Add (this.checkBoxPunctuation);
+            this.groupBoxSettings.Controls.Add (this.radioButtonRangeBase10);
+            this.groupBoxSettings.Controls.Add (this.checkBoxDigital);
+            this.groupBoxSettings.Controls.Add (this.checkBoxCyrillicUp);
+            this.groupBoxSettings.Controls.Add (this.checkBoxCyrillicDown);
+            this.groupBoxSettings.Controls.Add (this.checkBoxLatinUp);
+            this.groupBoxSettings.Controls.Add (this.checkBoxLatinDown);
             this.groupBoxSettings.Controls.Add (this.checkBox3);
-            this.groupBoxSettings.Controls.Add (this.checkBox2);
-            this.groupBoxSettings.Controls.Add (this.checkBox1);
+            this.groupBoxSettings.Controls.Add (this.checkBoxDigitalRange);
+            this.groupBoxSettings.Controls.Add (this.checkBoxStandart);
             this.groupBoxSettings.Location = new System.Drawing.Point (527, 12);
             this.groupBoxSettings.Name = "groupBoxSettings";
             this.groupBoxSettings.Size = new System.Drawing.Size (352, 466);
@@ -219,188 +221,183 @@
             this.groupBoxSettings.TabStop = false;
             this.groupBoxSettings.Text = "Настройки диапазона";
             // 
-            // checkBox1
+            // textBoxRange
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point (9, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size (199, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Стандартные диапазоны знакаов";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.textBoxRange.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange.Location = new System.Drawing.Point (9, 365);
+            this.textBoxRange.Multiline = true;
+            this.textBoxRange.Name = "textBoxRange";
+            this.textBoxRange.Size = new System.Drawing.Size (332, 90);
+            this.textBoxRange.TabIndex = 16;
             // 
-            // checkBox2
+            // checkBoxCustom
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point (24, 43);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size (139, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Цифровые диапазоны";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxCustom.AutoSize = true;
+            this.checkBoxCustom.Location = new System.Drawing.Point (9, 342);
+            this.checkBoxCustom.Name = "checkBoxCustom";
+            this.checkBoxCustom.Size = new System.Drawing.Size (182, 17);
+            this.checkBoxCustom.TabIndex = 15;
+            this.checkBoxCustom.Text = "Настроить диапазон в ручную";
+            this.checkBoxCustom.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // checkBoxPunctuation
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point (3, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size (107, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.Text = "Бинарные числа";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.checkBoxPunctuation.AutoSize = true;
+            this.checkBoxPunctuation.Location = new System.Drawing.Point (42, 319);
+            this.checkBoxPunctuation.Name = "checkBoxPunctuation";
+            this.checkBoxPunctuation.Size = new System.Drawing.Size (119, 17);
+            this.checkBoxPunctuation.TabIndex = 14;
+            this.checkBoxPunctuation.Text = "Знаки пунктуации";
+            this.checkBoxPunctuation.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // checkBoxDigital
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point (3, 26);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size (130, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.Text = "Восьмиричные числа";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.checkBoxDigital.AutoSize = true;
+            this.checkBoxDigital.Checked = true;
+            this.checkBoxDigital.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDigital.Location = new System.Drawing.Point (42, 296);
+            this.checkBoxDigital.Name = "checkBoxDigital";
+            this.checkBoxDigital.Size = new System.Drawing.Size (62, 17);
+            this.checkBoxDigital.TabIndex = 13;
+            this.checkBoxDigital.Text = "Цифры";
+            this.checkBoxDigital.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // checkBoxCyrillicUp
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point (3, 49);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size (132, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Десятиричные числа";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.checkBoxCyrillicUp.AutoSize = true;
+            this.checkBoxCyrillicUp.Location = new System.Drawing.Point (42, 273);
+            this.checkBoxCyrillicUp.Name = "checkBoxCyrillicUp";
+            this.checkBoxCyrillicUp.Size = new System.Drawing.Size (251, 17);
+            this.checkBoxCyrillicUp.TabIndex = 12;
+            this.checkBoxCyrillicUp.Text = "Кирилические буквы \"В ВЕРХНЕМ РЕГИСТРЕ\"";
+            this.checkBoxCyrillicUp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCyrillicDown
+            // 
+            this.checkBoxCyrillicDown.AutoSize = true;
+            this.checkBoxCyrillicDown.Location = new System.Drawing.Point (42, 250);
+            this.checkBoxCyrillicDown.Name = "checkBoxCyrillicDown";
+            this.checkBoxCyrillicDown.Size = new System.Drawing.Size (240, 17);
+            this.checkBoxCyrillicDown.TabIndex = 11;
+            this.checkBoxCyrillicDown.Text = "Кирилические буквы \"в нижнем регистре\"";
+            this.checkBoxCyrillicDown.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxLatinUp
+            // 
+            this.checkBoxLatinUp.AutoSize = true;
+            this.checkBoxLatinUp.Location = new System.Drawing.Point (42, 227);
+            this.checkBoxLatinUp.Name = "checkBoxLatinUp";
+            this.checkBoxLatinUp.Size = new System.Drawing.Size (233, 17);
+            this.checkBoxLatinUp.TabIndex = 10;
+            this.checkBoxLatinUp.Text = "Латинские буквы \"В ВЕРХНЕМ РЕГИСТРЕ\"";
+            this.checkBoxLatinUp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxLatinDown
+            // 
+            this.checkBoxLatinDown.AutoSize = true;
+            this.checkBoxLatinDown.Checked = true;
+            this.checkBoxLatinDown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLatinDown.Location = new System.Drawing.Point (42, 204);
+            this.checkBoxLatinDown.Name = "checkBoxLatinDown";
+            this.checkBoxLatinDown.Size = new System.Drawing.Size (222, 17);
+            this.checkBoxLatinDown.TabIndex = 9;
+            this.checkBoxLatinDown.Text = "Латинские буквы \"в нижнем регистре\"";
+            this.checkBoxLatinDown.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRangeBase64
+            // 
+            this.radioButtonRangeBase64.AutoSize = true;
+            this.radioButtonRangeBase64.Location = new System.Drawing.Point (42, 158);
+            this.radioButtonRangeBase64.Name = "radioButtonRangeBase64";
+            this.radioButtonRangeBase64.Size = new System.Drawing.Size (125, 17);
+            this.radioButtonRangeBase64.TabIndex = 6;
+            this.radioButtonRangeBase64.Text = "64-е числа (Base64)";
+            this.radioButtonRangeBase64.UseVisualStyleBackColor = true;
+            this.radioButtonRangeBase64.CheckedChanged += new System.EventHandler (this.radioButtonRangeBase64_CheckedChanged);
+            // 
+            // radioButtonRangeBase16
+            // 
+            this.radioButtonRangeBase16.AutoSize = true;
+            this.radioButtonRangeBase16.Location = new System.Drawing.Point (42, 135);
+            this.radioButtonRangeBase16.Name = "radioButtonRangeBase16";
+            this.radioButtonRangeBase16.Size = new System.Drawing.Size (165, 17);
+            this.radioButtonRangeBase16.TabIndex = 5;
+            this.radioButtonRangeBase16.Text = "Шестнадцатиричные числа";
+            this.radioButtonRangeBase16.UseVisualStyleBackColor = true;
+            this.radioButtonRangeBase16.CheckedChanged += new System.EventHandler (this.radioButtonRangeBase16_CheckedChanged);
+            // 
+            // radioButtonRangeBase2
+            // 
+            this.radioButtonRangeBase2.AutoSize = true;
+            this.radioButtonRangeBase2.Location = new System.Drawing.Point (42, 66);
+            this.radioButtonRangeBase2.Name = "radioButtonRangeBase2";
+            this.radioButtonRangeBase2.Size = new System.Drawing.Size (107, 17);
+            this.radioButtonRangeBase2.TabIndex = 2;
+            this.radioButtonRangeBase2.Text = "Бинарные числа";
+            this.radioButtonRangeBase2.UseVisualStyleBackColor = true;
+            this.radioButtonRangeBase2.CheckedChanged += new System.EventHandler (this.radioButtonRangeBase2_CheckedChanged);
+            // 
+            // radioButtonRangeBas8
+            // 
+            this.radioButtonRangeBas8.AutoSize = true;
+            this.radioButtonRangeBas8.Location = new System.Drawing.Point (42, 89);
+            this.radioButtonRangeBas8.Name = "radioButtonRangeBas8";
+            this.radioButtonRangeBas8.Size = new System.Drawing.Size (130, 17);
+            this.radioButtonRangeBas8.TabIndex = 3;
+            this.radioButtonRangeBas8.Text = "Восьмиричные числа";
+            this.radioButtonRangeBas8.UseVisualStyleBackColor = true;
+            this.radioButtonRangeBas8.CheckedChanged += new System.EventHandler (this.radioButtonRangeBas8_CheckedChanged);
+            // 
+            // radioButtonRangeBase10
+            // 
+            this.radioButtonRangeBase10.AutoSize = true;
+            this.radioButtonRangeBase10.Checked = true;
+            this.radioButtonRangeBase10.Location = new System.Drawing.Point (42, 112);
+            this.radioButtonRangeBase10.Name = "radioButtonRangeBase10";
+            this.radioButtonRangeBase10.Size = new System.Drawing.Size (132, 17);
+            this.radioButtonRangeBase10.TabIndex = 4;
+            this.radioButtonRangeBase10.TabStop = true;
+            this.radioButtonRangeBase10.Text = "Десятиричные числа";
+            this.radioButtonRangeBase10.UseVisualStyleBackColor = true;
+            this.radioButtonRangeBase10.CheckedChanged += new System.EventHandler (this.radioButtonRangeBase10_CheckedChanged);
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point (24, 189);
+            this.checkBox3.Location = new System.Drawing.Point (24, 181);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size (141, 17);
+            this.checkBox3.Size = new System.Drawing.Size (148, 17);
             this.checkBox3.TabIndex = 5;
-            this.checkBox3.Text = "Буквенные диапазоны";
+            this.checkBox3.Text = "Символьные диапазоны";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // checkBoxDigitalRange
             // 
-            this.panel1.Controls.Add (this.radioButton6);
-            this.panel1.Controls.Add (this.radioButton5);
-            this.panel1.Controls.Add (this.radioButton1);
-            this.panel1.Controls.Add (this.radioButton2);
-            this.panel1.Controls.Add (this.radioButton3);
-            this.panel1.Location = new System.Drawing.Point (39, 66);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size (200, 117);
-            this.panel1.TabIndex = 8;
+            this.checkBoxDigitalRange.AutoSize = true;
+            this.checkBoxDigitalRange.Location = new System.Drawing.Point (24, 43);
+            this.checkBoxDigitalRange.Name = "checkBoxDigitalRange";
+            this.checkBoxDigitalRange.Size = new System.Drawing.Size (139, 17);
+            this.checkBoxDigitalRange.TabIndex = 1;
+            this.checkBoxDigitalRange.Text = "Цифровые диапазоны";
+            this.checkBoxDigitalRange.UseVisualStyleBackColor = true;
+            this.checkBoxDigitalRange.CheckedChanged += new System.EventHandler (this.checkBoxDigitalRange_CheckedChanged);
             // 
-            // radioButton5
+            // checkBoxStandart
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point (3, 72);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size (165, 17);
-            this.radioButton5.TabIndex = 5;
-            this.radioButton5.Text = "Шестнадцатиричные числа";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point (3, 95);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size (125, 17);
-            this.radioButton6.TabIndex = 6;
-            this.radioButton6.Text = "64-е числа (Base64)";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point (42, 212);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size (222, 17);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "Латинские буквы \"в нижнем регистре\"";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point (42, 235);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size (233, 17);
-            this.checkBox5.TabIndex = 10;
-            this.checkBox5.Text = "Латинские буквы \"В ВЕРХНЕМ РЕГИСТРЕ\"";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point (42, 281);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size (251, 17);
-            this.checkBox6.TabIndex = 12;
-            this.checkBox6.Text = "Кирилические буквы \"В ВЕРХНЕМ РЕГИСТРЕ\"";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point (42, 258);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size (240, 17);
-            this.checkBox7.TabIndex = 11;
-            this.checkBox7.Text = "Кирилические буквы \"в нижнем регистре\"";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Checked = true;
-            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point (42, 304);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size (62, 17);
-            this.checkBox8.TabIndex = 13;
-            this.checkBox8.Text = "Цифры";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point (42, 327);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size (119, 17);
-            this.checkBox9.TabIndex = 14;
-            this.checkBox9.Text = "Знаки пунктуации";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point (9, 350);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size (182, 17);
-            this.checkBox10.TabIndex = 15;
-            this.checkBox10.Text = "Настроить диапазон в ручную";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point (9, 373);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size (332, 82);
-            this.textBox2.TabIndex = 16;
+            this.checkBoxStandart.AutoSize = true;
+            this.checkBoxStandart.Checked = true;
+            this.checkBoxStandart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStandart.Location = new System.Drawing.Point (9, 20);
+            this.checkBoxStandart.Name = "checkBoxStandart";
+            this.checkBoxStandart.Size = new System.Drawing.Size (199, 17);
+            this.checkBoxStandart.TabIndex = 0;
+            this.checkBoxStandart.Text = "Стандартные диапазоны знакаов";
+            this.checkBoxStandart.UseVisualStyleBackColor = true;
+            this.checkBoxStandart.CheckedChanged += new System.EventHandler (this.checkBoxStandart_CheckedChanged);
             // 
             // FormMain
             // 
@@ -422,8 +419,6 @@
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit ();
             this.groupBoxSettings.ResumeLayout (false);
             this.groupBoxSettings.PerformLayout ();
-            this.panel1.ResumeLayout (false);
-            this.panel1.PerformLayout ();
             this.ResumeLayout (false);
             this.PerformLayout ();
 
@@ -444,22 +439,21 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBoxSettings;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.RadioButton radioButtonRangeBase10;
+        private System.Windows.Forms.RadioButton radioButtonRangeBas8;
+        private System.Windows.Forms.RadioButton radioButtonRangeBase2;
+        private System.Windows.Forms.CheckBox checkBoxDigitalRange;
+        private System.Windows.Forms.CheckBox checkBoxStandart;
+        private System.Windows.Forms.CheckBox checkBoxLatinDown;
+        private System.Windows.Forms.RadioButton radioButtonRangeBase64;
+        private System.Windows.Forms.RadioButton radioButtonRangeBase16;
+        private System.Windows.Forms.TextBox textBoxRange;
+        private System.Windows.Forms.CheckBox checkBoxCustom;
+        private System.Windows.Forms.CheckBox checkBoxPunctuation;
+        private System.Windows.Forms.CheckBox checkBoxDigital;
+        private System.Windows.Forms.CheckBox checkBoxCyrillicUp;
+        private System.Windows.Forms.CheckBox checkBoxCyrillicDown;
+        private System.Windows.Forms.CheckBox checkBoxLatinUp;
     }
 }
 
