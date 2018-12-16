@@ -7,82 +7,99 @@ namespace PasswordGenerator
 {
     public class Generator
     {
-        public const string RangeBase2 = "01";
-        public const string RangeBase8 = "01234567";
-        public const string RangeBase10 = "0123456789";
-        public const string RangeBase16 = "0123456789ABCDEF";
-        public const string RangeBase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        private const string RangeBase2 = "01";
+        private const string RangeBase8 = "01234567";
+        private const string RangeBase10 = "0123456789";
+        private const string RangeBase16 = "0123456789ABCDEF";
+        private const string RangeBase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        private const string RangeLatin = "abcdefghijklmnopqrstuvwxyz";
+        private const string RangeCyrillic = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        private const string RangePunctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-        public const string RangeLatin = "abcdefghijklmnopqrstuvwxyz";
-        public const string RangeCyrillic = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-        public const string RangePunctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        private const string PasswordSeparator = " ";
 
-        public string CurrentRange { get { return (stringBuilder ?? CreateRange ()).ToString (); } }
-        private StringBuilder stringBuilder;
+        public string CurrentRange { get { return (currentRangeBuilder ?? CreateRange ()).ToString (); } }
+
+        private StringBuilder currentRangeBuilder;
         private SymbolAlphabetType symbolAlphabetType;
         private SymbolRegisterType symbolRegisterType;
         private DigitalBaseType digitalBaseType;
         private bool isPunctuationInclude;
 
+        public string Generate (int number, int length)
+        {
+            if (string.IsNullOrEmpty (CurrentRange))
+                return string.Empty;
+
+            var array = CurrentRange.ToCharArray ();
+            var result = new StringBuilder (number * (length + 1));
+            var random = new Random ();
+
+            for (int i = 0; i < number; i++)
+            {
+                for (int j = 0; j < length; j++)
+                    result.Append (array[random.Next () % array.Length]);
+
+                result.Append (PasswordSeparator);
+            }
+
+            return result.ToString ();
+        }
+
         public void SetDigitalRange (DigitalBaseType digitalBase)
         {
-            stringBuilder = null;
+            currentRangeBuilder = null;
             digitalBaseType = digitalBase;
         }
 
         public void SetSymbolsRange (SymbolAlphabetType symbolAlphabet, SymbolRegisterType symbolRegister)
         {
-            stringBuilder = null;
+            currentRangeBuilder = null;
             symbolAlphabetType = symbolAlphabet;
             symbolRegisterType = symbolRegister;
         }
 
         public void SetPunctuationSymbols (bool isPunctuation)
         {
-            stringBuilder = null;
+            currentRangeBuilder = null;
             isPunctuationInclude = isPunctuation;
         }
 
         private StringBuilder CreateRange ()
         {
-            stringBuilder = new StringBuilder ();
+            currentRangeBuilder = new StringBuilder ();
 
             switch (digitalBaseType)
             {
-                case DigitalBaseType.Base2: stringBuilder.Append (RangeBase2); break;
-                case DigitalBaseType.Base8: stringBuilder.Append (RangeBase8); break;
-                case DigitalBaseType.Base10: stringBuilder.Append (RangeBase10); break;
-                case DigitalBaseType.Base16: stringBuilder.Append (RangeBase16); break;
-                case DigitalBaseType.Base64: stringBuilder.Append (RangeBase64); break;
+                case DigitalBaseType.Base2: currentRangeBuilder.Append (RangeBase2); break;
+                case DigitalBaseType.Base8: currentRangeBuilder.Append (RangeBase8); break;
+                case DigitalBaseType.Base10: currentRangeBuilder.Append (RangeBase10); break;
+                case DigitalBaseType.Base16: currentRangeBuilder.Append (RangeBase16); break;
+                case DigitalBaseType.Base64: currentRangeBuilder.Append (RangeBase64); break;
             }
 
             if ((symbolAlphabetType & SymbolAlphabetType.Latin) > 0)
             {
                 if ((symbolRegisterType & SymbolRegisterType.Lowers) > 0)
-                    stringBuilder.Append (RangeLatin);
+                    currentRangeBuilder.Append (RangeLatin);
 
                 if ((symbolRegisterType & SymbolRegisterType.Uppers) > 0)
-                    stringBuilder.Append (RangeLatin.ToUpper ());
+                    currentRangeBuilder.Append (RangeLatin.ToUpper ());
             }
 
             if ((symbolAlphabetType & SymbolAlphabetType.Cyrillic) > 0)
             {
                 if ((symbolRegisterType & SymbolRegisterType.Lowers) > 0)
-                    stringBuilder.Append (RangeCyrillic);
+                    currentRangeBuilder.Append (RangeCyrillic);
 
                 if ((symbolRegisterType & SymbolRegisterType.Uppers) > 0)
-                    stringBuilder.Append (RangeCyrillic.ToUpper ());
+                    currentRangeBuilder.Append (RangeCyrillic.ToUpper ());
             }
 
             if (isPunctuationInclude)
-                stringBuilder.Append (RangePunctuation);
+                currentRangeBuilder.Append (RangePunctuation);
 
-            return stringBuilder;
-        }
-
-        public string Generate (int passwordNumber, int passwordLength)
-        {
-            return string.Empty;
+            return currentRangeBuilder;
         }
     }
 }
