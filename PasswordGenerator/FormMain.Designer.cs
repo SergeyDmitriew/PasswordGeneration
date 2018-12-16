@@ -68,7 +68,7 @@
             // 
             this.buttonGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonGeneration.Enabled = false;
-            this.buttonGeneration.Location = new System.Drawing.Point(444, 606);
+            this.buttonGeneration.Location = new System.Drawing.Point(281, 606);
             this.buttonGeneration.Name = "buttonGeneration";
             this.buttonGeneration.Size = new System.Drawing.Size(100, 23);
             this.buttonGeneration.TabIndex = 2;
@@ -79,7 +79,7 @@
             // buttonPathFile
             // 
             this.buttonPathFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPathFile.Location = new System.Drawing.Point(570, 606);
+            this.buttonPathFile.Location = new System.Drawing.Point(407, 606);
             this.buttonPathFile.Name = "buttonPathFile";
             this.buttonPathFile.Size = new System.Drawing.Size(100, 23);
             this.buttonPathFile.TabIndex = 6;
@@ -207,7 +207,7 @@
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordNumbers);
             this.groupBoxGenerationSettings.Controls.Add(this.labelLengthPassword);
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordLength);
-            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(436, 420);
+            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(273, 420);
             this.groupBoxGenerationSettings.Name = "groupBoxGenerationSettings";
             this.groupBoxGenerationSettings.Size = new System.Drawing.Size(234, 156);
             this.groupBoxGenerationSettings.TabIndex = 3;
@@ -346,7 +346,7 @@
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxSymbolsRange);
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxDigitalRange);
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxStandart);
-            this.groupBoxRangeSettings.Location = new System.Drawing.Point(436, 12);
+            this.groupBoxRangeSettings.Location = new System.Drawing.Point(273, 12);
             this.groupBoxRangeSettings.Name = "groupBoxRangeSettings";
             this.groupBoxRangeSettings.Size = new System.Drawing.Size(234, 402);
             this.groupBoxRangeSettings.TabIndex = 5;
@@ -436,17 +436,17 @@
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutput.Size = new System.Drawing.Size(418, 617);
+            this.textBoxOutput.Size = new System.Drawing.Size(255, 617);
             this.textBoxOutput.TabIndex = 0;
             // 
-            // checkBox1
+            // checkBoxAutoGenerate
             // 
             this.checkBoxAutoGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAutoGenerate.AutoSize = true;
             this.checkBoxAutoGenerate.Checked = true;
             this.checkBoxAutoGenerate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoGenerate.Location = new System.Drawing.Point(445, 582);
-            this.checkBoxAutoGenerate.Name = "checkBox1";
+            this.checkBoxAutoGenerate.Location = new System.Drawing.Point(282, 582);
+            this.checkBoxAutoGenerate.Name = "checkBoxAutoGenerate";
             this.checkBoxAutoGenerate.Size = new System.Drawing.Size(104, 17);
             this.checkBoxAutoGenerate.TabIndex = 11;
             this.checkBoxAutoGenerate.Text = "Автогенерация";
@@ -457,7 +457,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 641);
+            this.ClientSize = new System.Drawing.Size(519, 641);
             this.Controls.Add(this.checkBoxAutoGenerate);
             this.Controls.Add(this.groupBoxRangeSettings);
             this.Controls.Add(this.groupBoxGenerationSettings);
