@@ -117,7 +117,7 @@ namespace PasswordGenerator
             radioButtonRangeBase64.Enabled = state;
 
             generator.SetDigitalRange (GetSelectDigitalRange ());
-            textBoxCustomRange.Text = generator.CurrentRange;
+            OnChangeSettings ();
         }
 
         private void OnChangeSettingSymbolsRange ()
@@ -136,13 +136,13 @@ namespace PasswordGenerator
                 checkBoxSymbolLowers.Checked = true;
 
             generator.SetSymbolsRange (GetSelectSymbolsRange (), GetSelectRegisterRange ());
-            textBoxCustomRange.Text = generator.CurrentRange;
+            OnChangeSettings ();
         }
 
         private void OnChangeSettingPunctuationRange ()
         {
             generator.SetPunctuationSymbols (checkBoxPunctuation.Checked);
-            textBoxCustomRange.Text = generator.CurrentRange;
+            OnChangeSettings ();
         }
 
         private void OnChangedSeparatorType ()
@@ -157,6 +157,15 @@ namespace PasswordGenerator
                 generator.SetSeparator (textBoxSeparator.Text);
 
             textBoxSeparator.Enabled = radioButtonSeparatorCustom.Checked;
+            OnChangeSettings ();
+        }
+
+        private void OnChangeSettings ()
+        {
+            textBoxCustomRange.Text = generator.CurrentRange;
+
+            if (checkBoxAutoGenerate.Checked)
+                OnGenerate ();
         }
 
         private void OnGenerate ()
@@ -165,9 +174,6 @@ namespace PasswordGenerator
             int passwordLength = (int) numericUpDownPasswordLength.Value;
 
             textBoxOutput.Text = generator.Generate (passwordNumber, passwordLength);
-
-            if (saveFileDialog.FileName.Length > 0)
-                File.WriteAllText (saveFileDialog.FileName, textBoxOutput.Text);
         }
 
         private DigitalBaseType GetSelectDigitalRange ()
@@ -229,8 +235,19 @@ namespace PasswordGenerator
         {
             if (saveFileDialog.ShowDialog () == DialogResult.OK)
             {
-                textBoxFilePath.Text = saveFileDialog.FileName;
+                File.WriteAllText (saveFileDialog.FileName, textBoxOutput.Text);
             }
+        }
+
+        private void checkBoxAutoGenerate_CheckedChanged (object sender, EventArgs e)
+        {
+            buttonGeneration.Enabled = !checkBoxAutoGenerate.Checked;
+        }
+
+        private void numericUpDownPassword_ValueChanged (object sender, EventArgs e)
+        {
+            checkBoxAutoGenerate.Checked = numericUpDownPasswordLength.Value * numericUpDownPasswordNumbers.Value < 10000;
+            OnChangeSettings ();
         }
     }
 }
