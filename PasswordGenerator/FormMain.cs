@@ -81,6 +81,11 @@ namespace PasswordGenerator
             textBoxCustomRange.Enabled = checkBoxCustom.Checked;
         }
 
+        private void checkBoxAutoGenerate_CheckedChanged (object sender, EventArgs e)
+        {
+            buttonGeneration.Enabled = !checkBoxAutoGenerate.Checked;
+        }
+
         private void textBoxCustomRange_TextChanged (object sender, EventArgs e)
         {
             generator.SetCustomRange (textBoxCustomRange.Text);
@@ -96,14 +101,23 @@ namespace PasswordGenerator
             OnChangedSeparatorType ();
         }
 
+        private void numericUpDownPassword_ValueChanged (object sender, EventArgs e)
+        {
+            checkBoxAutoGenerate.Checked = numericUpDownPasswordLength.Value * numericUpDownPasswordNumbers.Value < 10000;
+            OnChangeSettings ();
+        }
+
         private void buttonGeneration_Click (object sender, EventArgs e)
         {
             OnGenerate ();
         }
 
-        private void buttonQuit_Click (object sender, EventArgs e)
+        private void buttonPathFile_Click (object sender, EventArgs e)
         {
-            Application.Exit ();
+            if (saveFileDialog.ShowDialog () == DialogResult.OK)
+            {
+                File.WriteAllText (saveFileDialog.FileName, textBoxOutput.Text);
+            }
         }
 
         private void OnChangeSettingDigitalRange ()
@@ -229,25 +243,6 @@ namespace PasswordGenerator
             }
 
             return result;
-        }
-
-        private void buttonPathFile_Click (object sender, EventArgs e)
-        {
-            if (saveFileDialog.ShowDialog () == DialogResult.OK)
-            {
-                File.WriteAllText (saveFileDialog.FileName, textBoxOutput.Text);
-            }
-        }
-
-        private void checkBoxAutoGenerate_CheckedChanged (object sender, EventArgs e)
-        {
-            buttonGeneration.Enabled = !checkBoxAutoGenerate.Checked;
-        }
-
-        private void numericUpDownPassword_ValueChanged (object sender, EventArgs e)
-        {
-            checkBoxAutoGenerate.Checked = numericUpDownPasswordLength.Value * numericUpDownPasswordNumbers.Value < 10000;
-            OnChangeSettings ();
         }
     }
 }
