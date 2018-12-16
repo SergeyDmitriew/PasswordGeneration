@@ -41,6 +41,10 @@
             this.checkBoxSymbolsRange = new System.Windows.Forms.CheckBox();
             this.checkBoxSymbolUppers = new System.Windows.Forms.CheckBox();
             this.groupBoxGenerationSettings = new System.Windows.Forms.GroupBox();
+            this.textBoxSeparator = new System.Windows.Forms.TextBox();
+            this.radioButtonSeparatorCustom = new System.Windows.Forms.RadioButton();
+            this.radioButtonSeparatorLines = new System.Windows.Forms.RadioButton();
+            this.radioButtonSeparatorSpace = new System.Windows.Forms.RadioButton();
             this.labelFilePath = new System.Windows.Forms.Label();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.labelNumbersPassword = new System.Windows.Forms.Label();
@@ -49,12 +53,13 @@
             this.numericUpDownPasswordLength = new System.Windows.Forms.NumericUpDown();
             this.groupBoxRangeSettings = new System.Windows.Forms.GroupBox();
             this.radioButtonRangeBase64 = new System.Windows.Forms.RadioButton();
-            this.textBoxRange = new System.Windows.Forms.TextBox();
+            this.textBoxCustomRange = new System.Windows.Forms.TextBox();
             this.radioButtonRangeBase16 = new System.Windows.Forms.RadioButton();
             this.radioButtonRangeBase2 = new System.Windows.Forms.RadioButton();
             this.radioButtonRangeBase8 = new System.Windows.Forms.RadioButton();
             this.radioButtonRangeBase10 = new System.Windows.Forms.RadioButton();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.groupBoxGenerationSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasswordNumbers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasswordLength)).BeginInit();
@@ -64,7 +69,7 @@
             // buttonGeneration
             // 
             this.buttonGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGeneration.Location = new System.Drawing.Point(297, 546);
+            this.buttonGeneration.Location = new System.Drawing.Point(273, 606);
             this.buttonGeneration.Name = "buttonGeneration";
             this.buttonGeneration.Size = new System.Drawing.Size(75, 23);
             this.buttonGeneration.TabIndex = 2;
@@ -75,23 +80,24 @@
             // buttonPathFile
             // 
             this.buttonPathFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPathFile.Enabled = false;
-            this.buttonPathFile.Location = new System.Drawing.Point(314, 72);
+            this.buttonPathFile.Location = new System.Drawing.Point(196, 73);
             this.buttonPathFile.Name = "buttonPathFile";
             this.buttonPathFile.Size = new System.Drawing.Size(27, 23);
             this.buttonPathFile.TabIndex = 6;
             this.buttonPathFile.Text = "...";
             this.buttonPathFile.UseVisualStyleBackColor = true;
+            this.buttonPathFile.Click += new System.EventHandler(this.buttonPathFile_Click);
             // 
             // buttonQuit
             // 
             this.buttonQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonQuit.Location = new System.Drawing.Point(576, 546);
+            this.buttonQuit.Location = new System.Drawing.Point(432, 606);
             this.buttonQuit.Name = "buttonQuit";
             this.buttonQuit.Size = new System.Drawing.Size(75, 23);
             this.buttonQuit.TabIndex = 4;
             this.buttonQuit.Text = "Выход";
             this.buttonQuit.UseVisualStyleBackColor = true;
+            this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
             // 
             // checkBoxCustom
             // 
@@ -109,9 +115,9 @@
             this.checkBoxCyrillicAlphabet.AutoSize = true;
             this.checkBoxCyrillicAlphabet.Location = new System.Drawing.Point(42, 227);
             this.checkBoxCyrillicAlphabet.Name = "checkBoxCyrillicAlphabet";
-            this.checkBoxCyrillicAlphabet.Size = new System.Drawing.Size(197, 17);
+            this.checkBoxCyrillicAlphabet.Size = new System.Drawing.Size(144, 17);
             this.checkBoxCyrillicAlphabet.TabIndex = 10;
-            this.checkBoxCyrillicAlphabet.Text = "Символы кирилическго алфавита";
+            this.checkBoxCyrillicAlphabet.Text = "Кирилические символы";
             this.checkBoxCyrillicAlphabet.UseVisualStyleBackColor = true;
             this.checkBoxCyrillicAlphabet.CheckedChanged += new System.EventHandler(this.checkBoxSymbolsRange_CheckedChanged);
             // 
@@ -135,9 +141,9 @@
             this.checkBoxLatinAlphabet.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLatinAlphabet.Location = new System.Drawing.Point(42, 204);
             this.checkBoxLatinAlphabet.Name = "checkBoxLatinAlphabet";
-            this.checkBoxLatinAlphabet.Size = new System.Drawing.Size(185, 17);
+            this.checkBoxLatinAlphabet.Size = new System.Drawing.Size(126, 17);
             this.checkBoxLatinAlphabet.TabIndex = 9;
-            this.checkBoxLatinAlphabet.Text = "Символы латинского алфавита";
+            this.checkBoxLatinAlphabet.Text = "Латинские символы";
             this.checkBoxLatinAlphabet.UseVisualStyleBackColor = true;
             this.checkBoxLatinAlphabet.CheckedChanged += new System.EventHandler(this.checkBoxSymbolsRange_CheckedChanged);
             // 
@@ -172,9 +178,9 @@
             this.checkBoxSymbolLowers.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxSymbolLowers.Location = new System.Drawing.Point(42, 250);
             this.checkBoxSymbolLowers.Name = "checkBoxSymbolLowers";
-            this.checkBoxSymbolLowers.Size = new System.Drawing.Size(189, 17);
+            this.checkBoxSymbolLowers.Size = new System.Drawing.Size(115, 17);
             this.checkBoxSymbolLowers.TabIndex = 11;
-            this.checkBoxSymbolLowers.Text = "Использовать \"нижний регистр\"";
+            this.checkBoxSymbolLowers.Text = "Регистр \"нижний\"";
             this.checkBoxSymbolLowers.UseVisualStyleBackColor = true;
             this.checkBoxSymbolLowers.CheckedChanged += new System.EventHandler(this.checkBoxSymbolsRange_CheckedChanged);
             // 
@@ -196,15 +202,19 @@
             this.checkBoxSymbolUppers.AutoSize = true;
             this.checkBoxSymbolUppers.Location = new System.Drawing.Point(42, 273);
             this.checkBoxSymbolUppers.Name = "checkBoxSymbolUppers";
-            this.checkBoxSymbolUppers.Size = new System.Drawing.Size(200, 17);
+            this.checkBoxSymbolUppers.Size = new System.Drawing.Size(122, 17);
             this.checkBoxSymbolUppers.TabIndex = 12;
-            this.checkBoxSymbolUppers.Text = "Использовать \"ВЕРХНИЙ РЕГИСТР\"";
+            this.checkBoxSymbolUppers.Text = "Регистр \"ВЕРХНИЙ\"";
             this.checkBoxSymbolUppers.UseVisualStyleBackColor = true;
             this.checkBoxSymbolUppers.CheckedChanged += new System.EventHandler(this.checkBoxSymbolsRange_CheckedChanged);
             // 
             // groupBoxGenerationSettings
             // 
             this.groupBoxGenerationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxGenerationSettings.Controls.Add(this.textBoxSeparator);
+            this.groupBoxGenerationSettings.Controls.Add(this.radioButtonSeparatorCustom);
+            this.groupBoxGenerationSettings.Controls.Add(this.radioButtonSeparatorLines);
+            this.groupBoxGenerationSettings.Controls.Add(this.radioButtonSeparatorSpace);
             this.groupBoxGenerationSettings.Controls.Add(this.buttonPathFile);
             this.groupBoxGenerationSettings.Controls.Add(this.labelFilePath);
             this.groupBoxGenerationSettings.Controls.Add(this.textBoxFilePath);
@@ -212,31 +222,78 @@
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordNumbers);
             this.groupBoxGenerationSettings.Controls.Add(this.labelLengthPassword);
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordLength);
-            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(297, 434);
+            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(273, 423);
             this.groupBoxGenerationSettings.Name = "groupBoxGenerationSettings";
-            this.groupBoxGenerationSettings.Size = new System.Drawing.Size(352, 106);
+            this.groupBoxGenerationSettings.Size = new System.Drawing.Size(234, 177);
             this.groupBoxGenerationSettings.TabIndex = 3;
             this.groupBoxGenerationSettings.TabStop = false;
             this.groupBoxGenerationSettings.Text = "Настройки генерации";
+            // 
+            // textBoxSeparator
+            // 
+            this.textBoxSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSeparator.Enabled = false;
+            this.textBoxSeparator.Location = new System.Drawing.Point(142, 146);
+            this.textBoxSeparator.Name = "textBoxSeparator";
+            this.textBoxSeparator.Size = new System.Drawing.Size(81, 21);
+            this.textBoxSeparator.TabIndex = 10;
+            this.textBoxSeparator.Text = " ";
+            this.textBoxSeparator.TextChanged += new System.EventHandler(this.textBoxSeparator_TextChanged);
+            // 
+            // radioButtonSeparatorCustom
+            // 
+            this.radioButtonSeparatorCustom.AutoSize = true;
+            this.radioButtonSeparatorCustom.Location = new System.Drawing.Point(9, 147);
+            this.radioButtonSeparatorCustom.Name = "radioButtonSeparatorCustom";
+            this.radioButtonSeparatorCustom.Size = new System.Drawing.Size(131, 17);
+            this.radioButtonSeparatorCustom.TabIndex = 9;
+            this.radioButtonSeparatorCustom.Text = "Другой разделитель";
+            this.radioButtonSeparatorCustom.UseVisualStyleBackColor = true;
+            this.radioButtonSeparatorCustom.CheckedChanged += new System.EventHandler(this.radioButtonSeparator_CheckedChanged);
+            // 
+            // radioButtonSeparatorLines
+            // 
+            this.radioButtonSeparatorLines.AutoSize = true;
+            this.radioButtonSeparatorLines.Checked = true;
+            this.radioButtonSeparatorLines.Location = new System.Drawing.Point(9, 124);
+            this.radioButtonSeparatorLines.Name = "radioButtonSeparatorLines";
+            this.radioButtonSeparatorLines.Size = new System.Drawing.Size(103, 17);
+            this.radioButtonSeparatorLines.TabIndex = 8;
+            this.radioButtonSeparatorLines.TabStop = true;
+            this.radioButtonSeparatorLines.Text = "С новой строки";
+            this.radioButtonSeparatorLines.UseVisualStyleBackColor = true;
+            this.radioButtonSeparatorLines.CheckedChanged += new System.EventHandler(this.radioButtonSeparator_CheckedChanged);
+            // 
+            // radioButtonSeparatorSpace
+            // 
+            this.radioButtonSeparatorSpace.AutoSize = true;
+            this.radioButtonSeparatorSpace.Location = new System.Drawing.Point(9, 101);
+            this.radioButtonSeparatorSpace.Name = "radioButtonSeparatorSpace";
+            this.radioButtonSeparatorSpace.Size = new System.Drawing.Size(136, 17);
+            this.radioButtonSeparatorSpace.TabIndex = 7;
+            this.radioButtonSeparatorSpace.Text = "Разделять пробелами";
+            this.radioButtonSeparatorSpace.UseVisualStyleBackColor = true;
+            this.radioButtonSeparatorSpace.CheckedChanged += new System.EventHandler(this.radioButtonSeparator_CheckedChanged);
             // 
             // labelFilePath
             // 
             this.labelFilePath.AutoSize = true;
             this.labelFilePath.Enabled = false;
-            this.labelFilePath.Location = new System.Drawing.Point(6, 76);
+            this.labelFilePath.Location = new System.Drawing.Point(6, 77);
             this.labelFilePath.Name = "labelFilePath";
-            this.labelFilePath.Size = new System.Drawing.Size(84, 13);
+            this.labelFilePath.Size = new System.Drawing.Size(66, 13);
             this.labelFilePath.TabIndex = 5;
-            this.labelFilePath.Text = "Запись в файл:";
+            this.labelFilePath.Text = "Сохранить:";
             // 
             // textBoxFilePath
             // 
             this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilePath.Enabled = false;
-            this.textBoxFilePath.Location = new System.Drawing.Point(96, 73);
+            this.textBoxFilePath.Location = new System.Drawing.Point(78, 74);
             this.textBoxFilePath.Name = "textBoxFilePath";
-            this.textBoxFilePath.Size = new System.Drawing.Size(212, 21);
+            this.textBoxFilePath.Size = new System.Drawing.Size(112, 21);
             this.textBoxFilePath.TabIndex = 4;
             // 
             // labelNumbersPassword
@@ -251,7 +308,12 @@
             // numericUpDownPasswordNumbers
             // 
             this.numericUpDownPasswordNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownPasswordNumbers.Location = new System.Drawing.Point(280, 46);
+            this.numericUpDownPasswordNumbers.Location = new System.Drawing.Point(162, 46);
+            this.numericUpDownPasswordNumbers.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericUpDownPasswordNumbers.Minimum = new decimal(new int[] {
             1,
             0,
@@ -261,7 +323,7 @@
             this.numericUpDownPasswordNumbers.Size = new System.Drawing.Size(61, 21);
             this.numericUpDownPasswordNumbers.TabIndex = 2;
             this.numericUpDownPasswordNumbers.Value = new decimal(new int[] {
-            10,
+            30,
             0,
             0,
             0});
@@ -278,7 +340,12 @@
             // numericUpDownPasswordLength
             // 
             this.numericUpDownPasswordLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownPasswordLength.Location = new System.Drawing.Point(280, 19);
+            this.numericUpDownPasswordLength.Location = new System.Drawing.Point(162, 19);
+            this.numericUpDownPasswordLength.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownPasswordLength.Minimum = new decimal(new int[] {
             1,
             0,
@@ -288,7 +355,7 @@
             this.numericUpDownPasswordLength.Size = new System.Drawing.Size(61, 21);
             this.numericUpDownPasswordLength.TabIndex = 0;
             this.numericUpDownPasswordLength.Value = new decimal(new int[] {
-            8,
+            10,
             0,
             0,
             0});
@@ -298,7 +365,7 @@
             this.groupBoxRangeSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxRangeSettings.Controls.Add(this.radioButtonRangeBase64);
-            this.groupBoxRangeSettings.Controls.Add(this.textBoxRange);
+            this.groupBoxRangeSettings.Controls.Add(this.textBoxCustomRange);
             this.groupBoxRangeSettings.Controls.Add(this.radioButtonRangeBase16);
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxCustom);
             this.groupBoxRangeSettings.Controls.Add(this.radioButtonRangeBase2);
@@ -312,9 +379,9 @@
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxSymbolsRange);
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxDigitalRange);
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxStandart);
-            this.groupBoxRangeSettings.Location = new System.Drawing.Point(297, 12);
+            this.groupBoxRangeSettings.Location = new System.Drawing.Point(273, 12);
             this.groupBoxRangeSettings.Name = "groupBoxRangeSettings";
-            this.groupBoxRangeSettings.Size = new System.Drawing.Size(352, 416);
+            this.groupBoxRangeSettings.Size = new System.Drawing.Size(234, 405);
             this.groupBoxRangeSettings.TabIndex = 5;
             this.groupBoxRangeSettings.TabStop = false;
             this.groupBoxRangeSettings.Text = "Настройки диапазона";
@@ -330,17 +397,18 @@
             this.radioButtonRangeBase64.UseVisualStyleBackColor = true;
             this.radioButtonRangeBase64.CheckedChanged += new System.EventHandler(this.radioButtonRangeBaseN_CheckedChanged);
             // 
-            // textBoxRange
+            // textBoxCustomRange
             // 
-            this.textBoxRange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxCustomRange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxRange.Location = new System.Drawing.Point(9, 342);
-            this.textBoxRange.Multiline = true;
-            this.textBoxRange.Name = "textBoxRange";
-            this.textBoxRange.Size = new System.Drawing.Size(332, 63);
-            this.textBoxRange.TabIndex = 16;
+            this.textBoxCustomRange.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCustomRange.Location = new System.Drawing.Point(9, 342);
+            this.textBoxCustomRange.Multiline = true;
+            this.textBoxCustomRange.Name = "textBoxCustomRange";
+            this.textBoxCustomRange.Size = new System.Drawing.Size(214, 52);
+            this.textBoxCustomRange.TabIndex = 16;
+            this.textBoxCustomRange.TextChanged += new System.EventHandler(this.textBoxCustomRange_TextChanged);
             // 
             // radioButtonRangeBase16
             // 
@@ -390,31 +458,36 @@
             // 
             // textBoxOutput
             // 
+            this.textBoxOutput.AcceptsReturn = true;
+            this.textBoxOutput.AcceptsTab = true;
+            this.textBoxOutput.AllowDrop = true;
             this.textBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOutput.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxOutput.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxOutput.Location = new System.Drawing.Point(12, 12);
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(273, 557);
+            this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxOutput.Size = new System.Drawing.Size(255, 617);
             this.textBoxOutput.TabIndex = 0;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 581);
+            this.ClientSize = new System.Drawing.Size(519, 641);
             this.Controls.Add(this.groupBoxRangeSettings);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.groupBoxGenerationSettings);
             this.Controls.Add(this.buttonGeneration);
             this.Controls.Add(this.textBoxOutput);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MinimumSize = new System.Drawing.Size(679, 620);
+            this.MinimumSize = new System.Drawing.Size(535, 680);
             this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.Text = "Генератор паролей";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.groupBoxGenerationSettings.ResumeLayout(false);
             this.groupBoxGenerationSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasswordNumbers)).EndInit();
@@ -449,12 +522,17 @@
         private System.Windows.Forms.CheckBox checkBoxLatinAlphabet;
         private System.Windows.Forms.RadioButton radioButtonRangeBase64;
         private System.Windows.Forms.RadioButton radioButtonRangeBase16;
-        private System.Windows.Forms.TextBox textBoxRange;
+        private System.Windows.Forms.TextBox textBoxCustomRange;
         private System.Windows.Forms.CheckBox checkBoxCustom;
         private System.Windows.Forms.CheckBox checkBoxPunctuation;
         private System.Windows.Forms.CheckBox checkBoxSymbolUppers;
         private System.Windows.Forms.CheckBox checkBoxSymbolLowers;
         private System.Windows.Forms.CheckBox checkBoxCyrillicAlphabet;
+        private System.Windows.Forms.TextBox textBoxSeparator;
+        private System.Windows.Forms.RadioButton radioButtonSeparatorCustom;
+        private System.Windows.Forms.RadioButton radioButtonSeparatorLines;
+        private System.Windows.Forms.RadioButton radioButtonSeparatorSpace;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

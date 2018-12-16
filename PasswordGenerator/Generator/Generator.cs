@@ -16,15 +16,14 @@ namespace PasswordGenerator
         private const string RangeCyrillic = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         private const string RangePunctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-        private const string PasswordSeparator = " ";
-
         public string CurrentRange { get { return (currentRangeBuilder ?? CreateRange ()).ToString (); } }
 
+        private bool isPunctuationInclude;
+        private string PasswordSeparator="++";
         private StringBuilder currentRangeBuilder;
         private SymbolAlphabetType symbolAlphabetType;
         private SymbolRegisterType symbolRegisterType;
         private DigitalBaseType digitalBaseType;
-        private bool isPunctuationInclude;
 
         public string Generate (int number, int length)
         {
@@ -63,6 +62,16 @@ namespace PasswordGenerator
         {
             currentRangeBuilder = null;
             isPunctuationInclude = isPunctuation;
+        }
+
+        public void SetCustomRange (string customRange)
+        {
+            currentRangeBuilder = new StringBuilder (customRange);
+        }
+
+        public void SetSeparator (string separator)
+        {
+            PasswordSeparator = separator;
         }
 
         private StringBuilder CreateRange ()

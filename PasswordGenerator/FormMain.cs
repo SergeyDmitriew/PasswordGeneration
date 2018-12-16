@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PasswordGenerator.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -25,8 +27,14 @@ namespace PasswordGenerator
             OnChangeSettingDigitalRange ();
             OnChangeSettingSymbolsRange ();
             OnChangeSettingPunctuationRange ();
+            OnChangedSeparatorType ();
 
-            textBoxRange.Enabled = checkBoxCustom.Checked;
+            textBoxCustomRange.Enabled = checkBoxCustom.Checked;
+        }
+
+        private void FormMain_Shown (object sender, EventArgs e)
+        {
+            OnGenerate ();
         }
 
         private void checkBoxStandart_CheckedChanged (object sender, EventArgs e)
@@ -70,7 +78,32 @@ namespace PasswordGenerator
             if (checkBoxCustom.Checked)
                 checkBoxStandart.Checked = false;
 
-            textBoxRange.Enabled = checkBoxCustom.Checked;
+            textBoxCustomRange.Enabled = checkBoxCustom.Checked;
+        }
+
+        private void textBoxCustomRange_TextChanged (object sender, EventArgs e)
+        {
+            generator.SetCustomRange (textBoxCustomRange.Text);
+        }
+
+        private void textBoxSeparator_TextChanged (object sender, EventArgs e)
+        {
+            generator.SetSeparator (textBoxSeparator.Text);
+        }
+
+        private void radioButtonSeparator_CheckedChanged (object sender, EventArgs e)
+        {
+            OnChangedSeparatorType ();
+        }
+
+        private void buttonGeneration_Click (object sender, EventArgs e)
+        {
+            OnGenerate ();
+        }
+
+        private void buttonQuit_Click (object sender, EventArgs e)
+        {
+            Application.Exit ();
         }
 
         private void OnChangeSettingDigitalRange ()
@@ -84,7 +117,7 @@ namespace PasswordGenerator
             radioButtonRangeBase64.Enabled = state;
 
             generator.SetDigitalRange (GetSelectDigitalRange ());
-            textBoxRange.Text = generator.CurrentRange;
+            textBoxCustomRange.Text = generator.CurrentRange;
         }
 
         private void OnChangeSettingSymbolsRange ()
@@ -103,13 +136,38 @@ namespace PasswordGenerator
                 checkBoxSymbolLowers.Checked = true;
 
             generator.SetSymbolsRange (GetSelectSymbolsRange (), GetSelectRegisterRange ());
-            textBoxRange.Text = generator.CurrentRange;
+            textBoxCustomRange.Text = generator.CurrentRange;
         }
 
         private void OnChangeSettingPunctuationRange ()
         {
             generator.SetPunctuationSymbols (checkBoxPunctuation.Checked);
-            textBoxRange.Text = generator.CurrentRange;
+            textBoxCustomRange.Text = generator.CurrentRange;
+        }
+
+        private void OnChangedSeparatorType ()
+        {
+            if (radioButtonSeparatorSpace.Checked)
+                generator.SetSeparator (" ");
+
+            if (radioButtonSeparatorLines.Checked)
+                generator.SetSeparator (Environment.NewLine);
+
+            if (radioButtonSeparatorCustom.Checked)
+                generator.SetSeparator (textBoxSeparator.Text);
+
+            textBoxSeparator.Enabled = radioButtonSeparatorCustom.Checked;
+        }
+
+        private void OnGenerate ()
+        {
+            int passwordNumber = (int) numericUpDownPasswordNumbers.Value;
+            int passwordLength = (int) numericUpDownPasswordLength.Value;
+
+            textBoxOutput.Text = generator.Generate (passwordNumber, passwordLength);
+
+            if (saveFileDialog.FileName.Length > 0)
+                File.WriteAllText (saveFileDialog.FileName, textBoxOutput.Text);
         }
 
         private DigitalBaseType GetSelectDigitalRange ()
@@ -167,12 +225,12 @@ namespace PasswordGenerator
             return result;
         }
 
-        private void buttonGeneration_Click (object sender, EventArgs e)
+        private void buttonPathFile_Click (object sender, EventArgs e)
         {
-            int passwordNumber = (int) numericUpDownPasswordNumbers.Value;
-            int passwordLength = (int) numericUpDownPasswordLength.Value;
-
-            textBoxOutput.Text = generator.Generate (passwordNumber, passwordLength);
+            if (saveFileDialog.ShowDialog () == DialogResult.OK)
+            {
+                textBoxFilePath.Text = saveFileDialog.FileName;
+            }
         }
     }
 }
