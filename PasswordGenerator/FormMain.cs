@@ -94,6 +94,7 @@ namespace PasswordGenerator
         private void textBoxSeparator_TextChanged (object sender, EventArgs e)
         {
             generator.SetSeparator (textBoxSeparator.Text);
+            OnChangeSettings ();
         }
 
         private void radioButtonSeparator_CheckedChanged (object sender, EventArgs e)
