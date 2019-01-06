@@ -67,7 +67,6 @@
             // buttonGeneration
             // 
             this.buttonGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGeneration.Enabled = false;
             this.buttonGeneration.Location = new System.Drawing.Point(281, 606);
             this.buttonGeneration.Name = "buttonGeneration";
             this.buttonGeneration.Size = new System.Drawing.Size(100, 23);
@@ -451,7 +450,6 @@
             this.checkBoxAutoGenerate.TabIndex = 11;
             this.checkBoxAutoGenerate.Text = "Автогенерация";
             this.checkBoxAutoGenerate.UseVisualStyleBackColor = true;
-            this.checkBoxAutoGenerate.CheckedChanged += new System.EventHandler(this.checkBoxAutoGenerate_CheckedChanged);
             // 
             // FormMain
             // 

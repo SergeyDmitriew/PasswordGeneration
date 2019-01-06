@@ -81,14 +81,10 @@ namespace PasswordGenerator
             textBoxCustomRange.Enabled = checkBoxCustom.Checked;
         }
 
-        private void checkBoxAutoGenerate_CheckedChanged (object sender, EventArgs e)
-        {
-            buttonGeneration.Enabled = !checkBoxAutoGenerate.Checked;
-        }
-
         private void textBoxCustomRange_TextChanged (object sender, EventArgs e)
         {
             generator.SetCustomRange (textBoxCustomRange.Text);
+            OnChangeSettings ();
         }
 
         private void textBoxSeparator_TextChanged (object sender, EventArgs e)
