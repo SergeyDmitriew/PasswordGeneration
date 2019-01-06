@@ -58,6 +58,8 @@
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.checkBoxAutoGenerate = new System.Windows.Forms.CheckBox();
+            this.checkBoxOtherSettings = new System.Windows.Forms.CheckBox();
+            this.buttonOtherSettings = new System.Windows.Forms.Button();
             this.groupBoxGenerationSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasswordNumbers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasswordLength)).BeginInit();
@@ -67,7 +69,7 @@
             // buttonGeneration
             // 
             this.buttonGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGeneration.Location = new System.Drawing.Point(281, 606);
+            this.buttonGeneration.Location = new System.Drawing.Point(281, 628);
             this.buttonGeneration.Name = "buttonGeneration";
             this.buttonGeneration.Size = new System.Drawing.Size(100, 23);
             this.buttonGeneration.TabIndex = 2;
@@ -78,7 +80,7 @@
             // buttonPathFile
             // 
             this.buttonPathFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPathFile.Location = new System.Drawing.Point(407, 606);
+            this.buttonPathFile.Location = new System.Drawing.Point(407, 628);
             this.buttonPathFile.Name = "buttonPathFile";
             this.buttonPathFile.Size = new System.Drawing.Size(100, 23);
             this.buttonPathFile.TabIndex = 6;
@@ -206,7 +208,7 @@
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordNumbers);
             this.groupBoxGenerationSettings.Controls.Add(this.labelLengthPassword);
             this.groupBoxGenerationSettings.Controls.Add(this.numericUpDownPasswordLength);
-            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(273, 420);
+            this.groupBoxGenerationSettings.Location = new System.Drawing.Point(273, 442);
             this.groupBoxGenerationSettings.Name = "groupBoxGenerationSettings";
             this.groupBoxGenerationSettings.Size = new System.Drawing.Size(234, 156);
             this.groupBoxGenerationSettings.TabIndex = 3;
@@ -330,6 +332,8 @@
             // 
             this.groupBoxRangeSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxRangeSettings.Controls.Add(this.buttonOtherSettings);
+            this.groupBoxRangeSettings.Controls.Add(this.checkBoxOtherSettings);
             this.groupBoxRangeSettings.Controls.Add(this.radioButtonRangeBase64);
             this.groupBoxRangeSettings.Controls.Add(this.textBoxCustomRange);
             this.groupBoxRangeSettings.Controls.Add(this.radioButtonRangeBase16);
@@ -347,7 +351,7 @@
             this.groupBoxRangeSettings.Controls.Add(this.checkBoxStandart);
             this.groupBoxRangeSettings.Location = new System.Drawing.Point(273, 12);
             this.groupBoxRangeSettings.Name = "groupBoxRangeSettings";
-            this.groupBoxRangeSettings.Size = new System.Drawing.Size(234, 402);
+            this.groupBoxRangeSettings.Size = new System.Drawing.Size(234, 424);
             this.groupBoxRangeSettings.TabIndex = 5;
             this.groupBoxRangeSettings.TabStop = false;
             this.groupBoxRangeSettings.Text = "Настройки диапазона";
@@ -372,7 +376,7 @@
             this.textBoxCustomRange.Location = new System.Drawing.Point(9, 342);
             this.textBoxCustomRange.Multiline = true;
             this.textBoxCustomRange.Name = "textBoxCustomRange";
-            this.textBoxCustomRange.Size = new System.Drawing.Size(214, 49);
+            this.textBoxCustomRange.Size = new System.Drawing.Size(214, 41);
             this.textBoxCustomRange.TabIndex = 16;
             this.textBoxCustomRange.TextChanged += new System.EventHandler(this.textBoxCustomRange_TextChanged);
             // 
@@ -435,7 +439,7 @@
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutput.Size = new System.Drawing.Size(255, 617);
+            this.textBoxOutput.Size = new System.Drawing.Size(255, 639);
             this.textBoxOutput.TabIndex = 0;
             // 
             // checkBoxAutoGenerate
@@ -444,18 +448,42 @@
             this.checkBoxAutoGenerate.AutoSize = true;
             this.checkBoxAutoGenerate.Checked = true;
             this.checkBoxAutoGenerate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoGenerate.Location = new System.Drawing.Point(282, 582);
+            this.checkBoxAutoGenerate.Location = new System.Drawing.Point(282, 604);
             this.checkBoxAutoGenerate.Name = "checkBoxAutoGenerate";
             this.checkBoxAutoGenerate.Size = new System.Drawing.Size(104, 17);
             this.checkBoxAutoGenerate.TabIndex = 11;
             this.checkBoxAutoGenerate.Text = "Автогенерация";
             this.checkBoxAutoGenerate.UseVisualStyleBackColor = true;
             // 
+            // checkBoxOtherSettings
+            // 
+            this.checkBoxOtherSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxOtherSettings.AutoSize = true;
+            this.checkBoxOtherSettings.Location = new System.Drawing.Point(9, 393);
+            this.checkBoxOtherSettings.Name = "checkBoxOtherSettings";
+            this.checkBoxOtherSettings.Size = new System.Drawing.Size(118, 17);
+            this.checkBoxOtherSettings.TabIndex = 17;
+            this.checkBoxOtherSettings.Text = "Дополнительно...";
+            this.checkBoxOtherSettings.UseVisualStyleBackColor = true;
+            this.checkBoxOtherSettings.CheckedChanged += new System.EventHandler(this.checkBoxOtherSettings_CheckedChanged);
+            // 
+            // buttonOtherSettings
+            // 
+            this.buttonOtherSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOtherSettings.Enabled = false;
+            this.buttonOtherSettings.Location = new System.Drawing.Point(148, 389);
+            this.buttonOtherSettings.Name = "buttonOtherSettings";
+            this.buttonOtherSettings.Size = new System.Drawing.Size(75, 23);
+            this.buttonOtherSettings.TabIndex = 18;
+            this.buttonOtherSettings.Text = "Прочее";
+            this.buttonOtherSettings.UseVisualStyleBackColor = true;
+            this.buttonOtherSettings.Click += new System.EventHandler(this.buttonOtherSettings_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 641);
+            this.ClientSize = new System.Drawing.Size(519, 663);
             this.Controls.Add(this.checkBoxAutoGenerate);
             this.Controls.Add(this.groupBoxRangeSettings);
             this.Controls.Add(this.groupBoxGenerationSettings);
@@ -511,6 +539,8 @@
         private System.Windows.Forms.RadioButton radioButtonSeparatorSpace;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.CheckBox checkBoxAutoGenerate;
+        private System.Windows.Forms.Button buttonOtherSettings;
+        private System.Windows.Forms.CheckBox checkBoxOtherSettings;
     }
 }
 

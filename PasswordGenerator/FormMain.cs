@@ -241,5 +241,15 @@ namespace PasswordGenerator
 
             return result;
         }
+
+        private void checkBoxOtherSettings_CheckedChanged (object sender, EventArgs e)
+        {
+            buttonOtherSettings.Enabled = checkBoxOtherSettings.Checked;
+        }
+
+        private void buttonOtherSettings_Click (object sender, EventArgs e)
+        {
+
+        }
     }
 }
